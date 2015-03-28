@@ -387,8 +387,7 @@ fi
 
 # Tune the Swift devices
 # Found by /proc/mounts and parsed with fs_type (change the value at the top of this script)
-#for disk in $(grep $fs_type /proc/mounts | awk '{ print $1 }' | awk -F"/" '{ print $3 }')
-for disk in $(awk '$3 ~ /^'$fs_type'/ { print $1 }' /proc/mounts | grep $dev_type | awk -F"/" '{ print $NF }' | sed 's/.$//')
+for disk in $(awk '$3 ~ /^'$fs_type'/ { print $1 }' /proc/mounts | grep $dev_type | awk -F"/" '{ print $NF }')
 do
 
   change_scheduler=/sys/block/$disk/queue/scheduler
